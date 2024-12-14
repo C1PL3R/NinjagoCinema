@@ -12,7 +12,7 @@ router.register(r'user', UserAPIView, basename='user')
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.index, name='home'),
     path('movies/', views.movies, name='movies'),
     path('download_segments/', views.preparing_for_loading_segments, name='download_segments'),
     path('api/', include(router.urls)),

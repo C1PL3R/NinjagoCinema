@@ -26,7 +26,7 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -73,10 +73,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ninjago_cinema.wsgi.application'
 
+ASGI_APPLICATION = 'ninjago_cinema.asgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'NinjagoCinema',
+#         'USER': 'avnadmin',
+#         'PASSWORD': 'AVNS_XsRtcs7ZPATQYokwOX9',
+#         'HOST': 'pg-14716daf-paklikovskijvitalij-d7c0.h.aivencloud.com',
+#         'PORT': '28430',
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'NinjagoCinemaDB',
+#         'USER': 'postgres',
+#         'PASSWORD': '2008',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

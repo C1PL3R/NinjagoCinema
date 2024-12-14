@@ -2,7 +2,7 @@ var video = document.getElementById('video');
 var hls;
 
 var playlists = [
-    '/media/Ninjago 13 season 16 episode/Ninjago 13 season 16 episode.m3u8'
+    '/media/Ninjago%2013%20season%2016%20episode/Ninjago%2013%20season%2016%20episode.m3u8'
 ];
 
 

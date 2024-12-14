@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 ninjago_cinema/ninjago_cinema/sercet.py
 list_files.py
+/ninjago_cinema/media
