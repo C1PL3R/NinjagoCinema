@@ -36,7 +36,7 @@ def preparing_for_loading_segments(request):
 
             SaP = SegmentsAndProgress()
             
-            segments = asyncio.run(SaP.download_segments(
+            asyncio.run(SaP.download_segments(
                 base_url=base_url,
                 minutes=minutes,
                 title=title
