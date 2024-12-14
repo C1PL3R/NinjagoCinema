@@ -5,9 +5,10 @@ function loadVideo(video, playlist) {
         hls.attachMedia(video); // Прикріплюємо медіа до елемента відео
 
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play().catch(error => {
-                console.warn('Не вдалося автоматично відтворити відео:', error);
-            });
+            // Прибираємо автоматичне відтворення відео
+            // video.play().catch(error => {
+            //     console.warn('Не вдалося автоматично відтворити відео:', error);
+            // });
         });
 
         hls.on(Hls.Events.ERROR, function (event, data) {
@@ -18,13 +19,6 @@ function loadVideo(video, playlist) {
             }
         });
 
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = playlist; // Підтримка для Safari
-        video.addEventListener('loadedmetadata', function () {
-            video.play().catch(error => {
-                console.warn('Не вдалося автоматично відтворити відео на Safari:', error);
-            });
-        });
     } else {
         console.error('HLS не підтримується вашим браузером');
     }
@@ -58,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 moviesDiv.classList.add('movies_div');
 
                 // Додаємо заголовок
-                const title = document.createElement('h2');
+                const title = document.createElement('h1');
                 title.textContent = movie.title;
                 title.classList.add('title');
                 moviesDiv.appendChild(title);

@@ -1,11 +1,13 @@
 import os
 import aiohttp
+import json
 
 
 class SegmentsAndProgress:
-    def __init__(self):
-        self.percent_complete = None
+    def __init__(self, websocket=None):
+        self.percent_complete = 0
         self.segments = []
+        self.websocket = websocket  # Зберігаємо з'єднання WebSocket
 
     async def download_file(self, session, url, save_path):
         try:
@@ -30,10 +32,21 @@ class SegmentsAndProgress:
 
                 await self.download_file(session, url, save_path)
 
-                self.percent_complete = ((i - 1 + 1) / total_segments) * 100
+                # Оновлення прогресу
+                self.percent_complete = ((i) / total_segments) * 100
+
+                # Відправлення прогресу через WebSocket
+                if self.websocket:
+                    self.send_progress()
+
                 print(f"\rЗавантаження: {self.percent_complete:.2f}%", end='')
 
         print("\nВсі сегменти успішно завантажені!")
+
+    def send_progress(self):
+        # Цей метод відправляє прогрес через WebSocket
+        if self.websocket:
+            self.websocket.send(json.dumps({'progress': self.percent_complete}))
 
     def generate_m3u8(self, name, target_duration=5):
         output_file = os.path.join(os.getcwd(), 'media', name, f'{name}.m3u8')

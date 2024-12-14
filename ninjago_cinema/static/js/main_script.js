@@ -26,6 +26,14 @@ function getCookie(name) {
 
 // Функція для завантаження сегментів
 function DownloadSegments() {
+    var socket = new WebSocket('ws://127.0.0.1:8000/ws/progress/')
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        document.querySelector('#progress').innerText = `${data.progress.toFixed(2)}%`;
+    };
+
     let link_input = document.getElementById('link_input').value;
     let title_of_movie = document.getElementById('title').value;
     let minutes = document.getElementById('minutes').value;  // Збираємо значення з інпуту
@@ -44,7 +52,6 @@ function DownloadSegments() {
     })
         .then(response => {
             if (response.ok) {
-                document.querySelector('#progress').innerText = `Wait please!`;
                 return response.json(); // Отримуємо JSON відповідь
             } else {
                 console.error('Помилка відповіді сервера:', response.status);
@@ -61,9 +68,4 @@ function DownloadSegments() {
         });
 }
 
-// var socket = new WebSocket('ws://127.0.0.1:8000/ws/progress/')
-// socket.onmessage = function (event) {
-//     var data = JSON.parse(event.data)
-//     console.log(data)
-//     document.querySelector('#app').innerText = data.progress
-// }
+

@@ -16,7 +16,7 @@
     <div id="menu">
         <ul>
             <li><a href="/">Home</a></li>
-            <li> <a href="{% url 'movies' %}">Watch Movie</a> </li>
+            <li> <a href="{% url 'movies' %}">Watch Movie</a></li>
         </ul>
     </div>
     <div class="header">
@@ -26,11 +26,15 @@
         <div id="burger-menu" class="menu_button_box">
             <span></span>
         </div>
+        <span class="license-text">
+            <a href="https://github.com/C1PL3R/NinjagoCinema/blob/Source-code/LICENSE">License</a>
+        </span>
     </div>
 
     {% block body %}
     {% endblock %}
 
+    
     <script src="{% static 'js/main_script.js' %}"></script>
 </body>
 

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% load static %}
 
-{% block title %}Main page{% endblock %}
+{% block title %}Ninjago Cinema | Main page{% endblock %}
 
 
 {% block body %}
@@ -11,7 +11,8 @@
 <input id="minutes" value="1" type="number" placeholder="Enter the minutes">
 
 <button onclick="DownloadSegments()">Download segments</button>
+<div class="progress-container">
+    <span id="progress">0%</span>
+</div>
 
-
-<span id="progress"></span>
 {% endblock %}
