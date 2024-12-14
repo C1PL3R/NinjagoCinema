@@ -4,7 +4,7 @@ class Movie(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50, null=True)
     description = models.TextField(null=True)
-    url_for_segments = models.URLField(max_length=200, null=True)
+    m3u8_url = models.URLField(max_length=200, null=True)
     main_photo_url = models.URLField(max_length=200, null=True)
     minutes = models.IntegerField(null=True)
     is_published = models.BooleanField(null=True)

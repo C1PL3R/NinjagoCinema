@@ -4,7 +4,7 @@ import aiohttp
 
 class SegmentsAndProgress:
     def __init__(self):
-        self.percent_complete = 0
+        self.percent_complete = None
         self.segments = []
 
     async def download_file(self, session, url, save_path):

@@ -4,11 +4,12 @@
 {% block title %}Movies{% endblock %}
 
 {% block head %}
-    <script src="{% static 'js/hls.min.js' %}"></script>
+    <script src="{% static 'js/hls.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-    <video id="video" width="640" height="360" controls playsinline preload="metadata"></video>
+    <!-- <video id="video" width="640" height="360" controls playsinline preload="metadata"></video> -->
+    <div class="movies-container"></div>
     
     <script src="{% static 'js/video.js' %}"></script>
 {% endblock %}

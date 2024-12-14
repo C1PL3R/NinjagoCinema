@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Ninjago';
-    src: url('../font/legothick.ttf') format('truetype');
+    font-family: 'Jansina';
+    src: url('../font/Jansina.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Ninjago';
+    font-family: 'Akisa';
     src: url('../font/Akisa.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
@@ -21,7 +21,7 @@
 
 body {
     background-color: #0F0E0E;
-    font-family: 'Ninjago', serif;
+    font-family: 'Akisa', serif;
     overflow-y: auto;
     position: relative;
 }
@@ -219,7 +219,7 @@ input::placeholder {
 }
 
 button{
-    font-family: "Ninjago";
+    font-family: "Akisa";
     font-size: 25px;
     position: relative;
     padding: 15px;
@@ -235,4 +235,28 @@ button{
 #progress{
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.title{
+    color: white;
+    font-family: 'Jansina';
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+#video {
+    display: block; /* Забезпечує, що елемент займає весь рядок */
+    margin: 0 auto; /* Горизонтальне вирівнювання */
+    padding: 15px; /* Відступи всередині */
+}
+
+.movies-container {
+    margin-top: 50px;
+    display: flex; /* Використовуємо флексбокс для вертикального центрування */
+    flex-direction: column; /* Розташування елементів у колонку */
+    align-items: center; /* Центрування по горизонталі */
+    justify-content: center; /* Центрування по вертикалі */
+    height: 100vh; /* Займає всю висоту сторінки */
+    text-align: center; /* Вирівнювання тексту */
 }

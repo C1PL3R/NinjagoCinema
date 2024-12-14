@@ -41,6 +41,12 @@ def preparing_for_loading_segments(request):
                 minutes=minutes,
                 title=title
             ))
+            
+            url = f'/media/{title}/{title}.m3u8'
+            encoded_url = url.replace(' ', '%20')
+            
+            movie_db = Movie.objects.create(title=title, minutes=minutes, m3u8_url=encoded_url)
+            movie_db.save()
 
             SaP.generate_m3u8(title)
             return JsonResponse({'status': 'success'})
