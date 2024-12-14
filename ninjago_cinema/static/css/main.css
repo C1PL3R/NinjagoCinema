@@ -1,0 +1,238 @@
+@font-face {
+    font-family: 'Ninjago';
+    src: url('../font/legothick.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ninjago';
+    src: url('../font/Akisa.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'Shinobi';
+    src: url('../font/Shinobi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+body {
+    background-color: #0F0E0E;
+    font-family: 'Ninjago', serif;
+    overflow-y: auto;
+    position: relative;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #E3651D;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid #BED754;
+    border-radius: 10px;
+    background: #BED754;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #defa60;
+}
+
+
+.header-text a {
+    font-size: 25px;
+    color: #EEEEEE;
+    position: relative;
+    left: 670px;
+    top: 13px;
+    height: auto;
+    width: auto;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.header-text a:hover {
+    transition: 0.5s ease-in;
+    text-decoration: underline;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #541212;
+    z-index: 30;
+}
+
+#burger-menu {
+    cursor: pointer;
+    height: 27px;
+    width: 27px;
+    margin: 20px;
+    overflow: visible;
+    position: relative;
+    z-index: 2;
+    top: -37px;
+    left: 30px;
+}
+
+#burger-menu span,
+#burger-menu span:before,
+#burger-menu span:after {
+    background: #EEEEEE;
+    display: block;
+    height: 2px;
+    opacity: 1;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+}
+
+#burger-menu span:before,
+#burger-menu span:after {
+    content: '';
+}
+
+#burger-menu span:before {
+    left: 0px;
+    top: -10px;
+    width: 27px;
+}
+
+#burger-menu span {
+    right: 0px;
+    top: 13px;
+    width: 27px;
+}
+
+#burger-menu span:after {
+    left: 0px;
+    top: 10px;
+    width: 27px;
+}
+
+#burger-menu.close span:before {
+    top: 0px;
+    transform: rotate(90deg);
+    width: 27px;
+}
+
+#burger-menu.close span {
+    transform: rotate(-45deg);
+    top: 13px;
+    width: 27px;
+}
+
+#burger-menu.close span:after {
+    top: 0px;
+    left: 0;
+    transform: rotate(90deg);
+    opacity: 0;
+    width: 0;
+}
+
+#menu {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 1;
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    visibility: hidden;
+    opacity: 0;
+    text-align: left;
+    padding-top: 20px;
+    transition: all 0.5s ease-in-out;
+    color: #EEEEEE;
+}
+
+#menu.overlay {
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    background: #541212;
+    padding-bottom: 60px;
+}
+
+#menu ul {
+    padding: 0;
+}
+
+#menu li {
+    list-style: none;
+}
+
+#menu a {
+    width: auto;
+    position: relative;
+    top: 60px;
+    left: 20px;
+    color: #EEEEEE;
+    display: block;
+    font-size: 25px;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    transition: 0.5s ease-in;
+    text-decoration: underline;
+}
+
+#menu.close {
+    left: -300px;
+    opacity: 0;
+}
+
+#menu::-webkit-scrollbar {
+    width: 0px;
+}
+
+input {
+    background-color: #515151;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 300px;
+    height: auto;
+    padding: 5px;
+    position: relative;
+    top: 100px;
+    left: 330px;
+    color: rgb(255, 255, 255);
+    font-size: larger;
+}
+
+input::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+button{
+    font-family: "Ninjago";
+    font-size: 25px;
+    position: relative;
+    padding: 15px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #515151;
+    color: white;
+    top: 200px;
+    right: 260px;
+    cursor: pointer;
+}
+
+#progress{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
