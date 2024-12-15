@@ -293,3 +293,12 @@ button{
     text-align: center;
 }
 
+.status_added_movie{
+    color: #541212;
+    font-family: 'Akisa';
+    font-size: 28px;
+    position: relative;
+    top: 220px;
+    padding: 10px;
+}
+

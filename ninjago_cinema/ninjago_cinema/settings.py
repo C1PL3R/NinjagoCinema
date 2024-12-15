@@ -150,6 +150,12 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",  # це вказує на папку `static` у корені проекту
 ]
 
+import os
+
+MEDIA_URL = '/media/'  # The URL to access media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # The path to your media directory
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

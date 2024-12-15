@@ -7,7 +7,7 @@ class SegmentsAndProgress:
     def __init__(self, websocket=None):
         self.percent_complete = 0
         self.segments = []
-        self.websocket = websocket  # Зберігаємо з'єднання WebSocket
+        self.websocket = websocket
 
     async def download_file(self, session, url, save_path):
         try:
@@ -43,10 +43,16 @@ class SegmentsAndProgress:
 
         print("\nВсі сегменти успішно завантажені!")
 
+    
     def send_progress(self):
-        # Цей метод відправляє прогрес через WebSocket
         if self.websocket:
-            self.websocket.send(json.dumps({'progress': self.percent_complete}))
+            try:
+                message = json.dumps({'progress': self.percent_complete})
+                self.websocket.send(message)
+                print(f"Повідомлення відправлено: {message}")
+            except Exception as e:
+                print(f"Помилка при відправленні повідомлення: {e}")
+                
 
     def generate_m3u8(self, name, target_duration=5):
         output_file = os.path.join(os.getcwd(), 'media', name, f'{name}.m3u8')

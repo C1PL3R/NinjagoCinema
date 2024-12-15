@@ -1,28 +1,48 @@
-function loadVideo(video, playlist) {
+function loadVideo(videoElement, m3u8Url) {
+    // Перевірка, чи підтримує браузер HLS.js
     if (Hls.isSupported()) {
-        var hls = new Hls(); // Створюємо локальну змінну для HLS
-        hls.loadSource(playlist); // Завантажуємо переданий плейлист
-        hls.attachMedia(video); // Прикріплюємо медіа до елемента відео
+        var hls = new Hls();
 
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            // Прибираємо автоматичне відтворення відео
-            // video.play().catch(error => {
-            //     console.warn('Не вдалося автоматично відтворити відео:', error);
-            // });
-        });
-
+        // Якщо є проблема з парсингом м3u8, виводимо помилку
         hls.on(Hls.Events.ERROR, function (event, data) {
             if (data.fatal) {
-                console.error('Фатальна помилка HLS.js:', data);
-            } else {
-                console.warn('Попередження HLS.js:', data);
+                switch (data.fatal) {
+                    case Hls.ErrorTypes.NETWORK_ERROR:
+                        console.error('Мережевий збій при завантаженні м3u8');
+                        break;
+                    case Hls.ErrorTypes.MEDIA_ERROR:
+                        console.error('Помилка медіа (наприклад, помилка декодування)');
+                        break;
+                    case Hls.ErrorTypes.OTHER_ERROR:
+                        console.error('Інша помилка HLS.js');
+                        break;
+                    default:
+                        console.error('Невідома помилка HLS.js');
+                }
             }
         });
 
+        // Завантажуємо m3u8 файл
+        hls.loadSource(m3u8Url);
+
+        // Підключаємо до відео елемента
+        hls.attachMedia(videoElement);
+
+        // Запускаємо відтворення
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            videoElement.play();
+        });
+    } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+        // Підтримка для Safari, який підтримує HLS без HLS.js
+        videoElement.src = m3u8Url;
+        videoElement.addEventListener('loadedmetadata', function () {
+            videoElement.play();
+        });
     } else {
-        console.error('HLS не підтримується вашим браузером');
+        console.error('Ваш браузер не підтримує HLS');
     }
 }
+
 
 
 
@@ -65,9 +85,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 video.playsInline = true;
                 video.preload = 'metadata';
                 moviesDiv.appendChild(video);
+                
+                const baseUrl = "http://127.0.0.1:8000"; // базовий URL
+                const m3u8Url = baseUrl + movie.m3u8_url.replace('./', '/'); // виправляємо шлях, якщо він починається з './'
+
+                console.log('M3U8 URL:', m3u8Url);
 
                 // Завантажуємо відео через HLS.js
-                loadVideo(video, 'http://127.0.0.1:8000' + movie.m3u8_url);
+                loadVideo(video, movie.m3u8_url);
 
                 // Додаємо весь блок у контейнер
                 moviesContainer.appendChild(moviesDiv);

@@ -1,25 +1,39 @@
-import json
-from random import randint
 import asyncio
 
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer
+import asyncio
+import json
 from .download_segments import SegmentsAndProgress
 
 progress = SegmentsAndProgress()
 
-class WSConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
+from channels.generic.websocket import AsyncWebsocketConsumer
+import json
+import asyncio
 
-        # Передаємо WebSocket в об'єкт SegmentsAndProgress
+import asyncio
+import json
+from channels.generic.websocket import AsyncWebsocketConsumer
+from .download_segments import SegmentsAndProgress
+
+class WSConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        
+        # Ініціалізація об'єкта SegmentsAndProgress і передача WebSocket
         self.progress = SegmentsAndProgress(websocket=self)
-        self.progress.send_progress()  # Надсилаємо початковий прогрес
+        
 
-    def receive(self, text_data):
+    async def receive(self, text_data):
+        # Обробка повідомлень від клієнта
         pass
 
-    def update_progress(self):
-        # Використовуємо асинхронне оновлення прогресу
+    async def update_progress(self):
         while self.progress.percent_complete < 100:
-            self.progress.send_progress()
-            asyncio.sleep(1)
+            # Оновлюємо прогрес
+            await self.progress.send_progress()
+            await asyncio.sleep(1)
+
+        # Завершальний прогрес після того, як завантаження завершено
+        await self.progress.send_progress()
+

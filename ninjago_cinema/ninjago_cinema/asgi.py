@@ -7,6 +7,6 @@ from movies_app.routing import ws_urlpatterns
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ninjago_cinema.settings')
 
 application = ProtocolTypeRouter({
-    'http': get_asgi_application(),  
-    'websocket': AuthMiddlewareStack(URLRouter(ws_urlpatterns))
+    'http': get_asgi_application(),
+    'websocket': AuthMiddlewareStack(URLRouter(ws_urlpatterns)),
 })

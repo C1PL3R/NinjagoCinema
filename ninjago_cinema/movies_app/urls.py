@@ -16,4 +16,7 @@ urlpatterns = [
     path('movies/', views.movies, name='movies'),
     path('download_segments/', views.preparing_for_loading_segments, name='download_segments'),
     path('api/', include(router.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:  # Ensure this is only done in development (not production)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

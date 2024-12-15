@@ -35,21 +35,25 @@ def preparing_for_loading_segments(request):
             minutes = int(data.get('minutes'))
 
             SaP = SegmentsAndProgress()
+        
             
-            asyncio.run(SaP.download_segments(
-                base_url=base_url,
-                minutes=minutes,
-                title=title
-            ))
-            
-            url = f'/media/{title}/{title}.m3u8'
-            encoded_url = url.replace(' ', '%20')
-            
-            movie_db = Movie.objects.create(title=title, minutes=minutes, m3u8_url=encoded_url)
-            movie_db.save()
+            if not Movie.objects.filter(title=title).exists():
+                asyncio.run(SaP.download_segments(
+                    base_url=base_url,
+                    minutes=minutes,
+                    title=title
+                ))
+                
+                url = f'/media/{title}/{title}.m3u8'
+                encoded_url = url.replace(' ', '%20')
+                movie_db = Movie.objects.create(title=title, minutes=minutes, m3u8_url=encoded_url)
+                movie_db.save()
+                status_added_movie = 'Movie successfully added'
+            else:
+                status_added_movie = 'A film with that title already exists'
 
             SaP.generate_m3u8(title)
-            return JsonResponse({'status': 'success'})
+            return JsonResponse({'status': 'success', 'status_added_movie': status_added_movie})
         except json.JSONDecodeError:
             return JsonResponse({'status': 'fail', 'error': 'Invalid JSON'}, status=400)
         except Exception as e:
