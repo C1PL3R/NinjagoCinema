@@ -4,10 +4,15 @@
     font-weight: normal;
     font-style: normal;
 }
-
+/* 
 @font-face {
     font-family: 'Akisa';
     src: url('../font/Akisa.otf') format('opentype');
+} */
+
+@font-face {
+    font-family: 'Akisa';
+    src: url('../font/Akisa.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -251,7 +256,7 @@ button{
 #video {
     display: block; /* Забезпечує, що елемент займає весь рядок */
     margin: 0 auto; /* Горизонтальне вирівнювання */
-    padding: 15px; /* Відступи всередині */
+    padding: 15px;
 }
 
 .movies-container {
@@ -263,6 +268,7 @@ button{
     justify-content: center; /* Центрування по вертикалі */
     height: 100vh; /* Займає всю висоту сторінки */
     text-align: center; /* Вирівнювання тексту */
+    padding-bottom: 30px;
 }
 
 
