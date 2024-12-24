@@ -9,7 +9,7 @@ eel.init("static")  # вказати папку зі статичними фай
 
 def run_django():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ninjago_cinema.settings')
-    subprocess.run(["python", r"C:\Users\Hom\Desktop\NinjagoCinema (GitHub)\NinjagoCinema\ninjago_cinema\manage.py", "runserver", "127.0.0.1:8000"])  # Запуск серверу Django на 8000
+    subprocess.run(["python", r"ninjago_cinema\manage.py", "runserver", "127.0.0.1:8000"])  # Запуск серверу Django на 8000
 
 def run_eel():
     eel.start("start.html", size=(800, 600), port=8000)
