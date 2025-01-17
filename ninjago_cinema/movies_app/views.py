@@ -42,6 +42,7 @@ def preparing_for_loading_segments(request):
                     minutes=minutes,
                     title=title
                 ))
+                SaP.generate_m3u8(title)
                 
                 url = f'/media/{title}/{title}.m3u8'
                 
@@ -53,7 +54,6 @@ def preparing_for_loading_segments(request):
             else:
                 status_added_movie = 'A film with that title already exists'
 
-            SaP.generate_m3u8(title)
             return JsonResponse({'status': 'success', 'status_added_movie': status_added_movie})
         except json.JSONDecodeError:
             return JsonResponse({'status': 'fail', 'error': 'Invalid JSON'}, status=400)

@@ -1,0 +1,18 @@
+.title{
+    color: white;
+    font-family: 'Jansina';
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+.movies-container {
+    margin-top: 60px;
+    display: flex; /* Використовуємо flexbox */
+    flex-wrap: wrap; /* Дозволяє перенесення елементів на новий ряд */
+    justify-content: center; /* Центрування елементів по горизонталі */
+    gap: 20px; /* Відступи між відео */
+}
+

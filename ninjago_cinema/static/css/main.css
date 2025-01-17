@@ -245,32 +245,6 @@ button{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.title{
-    color: white;
-    font-family: 'Jansina';
-    padding: 15px;
-    width: 100%;
-    text-align: center;
-}
-
-#video {
-    display: block; /* Забезпечує, що елемент займає весь рядок */
-    margin: 0 auto; /* Горизонтальне вирівнювання */
-    padding: 15px;
-}
-
-.movies-container {
-    position: relative;
-    top: 120px;
-    display: flex; /* Використовуємо флексбокс для вертикального центрування */
-    flex-direction: column; /* Розташування елементів у колонку */
-    align-items: center; /* Центрування по горизонталі */
-    justify-content: center; /* Центрування по вертикалі */
-    height: 100vh; /* Займає всю висоту сторінки */
-    text-align: center; /* Вирівнювання тексту */
-    padding-bottom: 30px;
-}
-
 
 .license-text a {
     position: relative;
